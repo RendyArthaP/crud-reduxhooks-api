@@ -49,12 +49,12 @@ export const getDataUserError = (error) => {
 
 export const getDataUser = () => {
   return function(dispatch) {
-    dispatch(getDataUserRequest);
+    dispatch(getDataUserRequest());
 
     axios
       .get("https://6023a95a6bf3e6001766b546.mockapi.io/users")
-      .then((result) => getDataUserSuccess(result.data))
-      .catch((error) => getDataUserError(error))
+      .then((result) => dispatch(getDataUserSuccess(result.data)))
+      .catch((error) => dispatch(getDataUserError(error)))
   }
 }
 

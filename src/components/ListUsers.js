@@ -1,10 +1,17 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
-const ListUsers = () => {
+const ListUsers = ({users}) => {
   return (
-    <div>
-      
-    </div>
+    <Container>
+      {users.map((listUser) => (
+        <div key={listUser.id}>
+          <span>
+            {listUser.user}
+          </span>
+        </div>
+      ))}
+    </Container>
   )
 }
 
