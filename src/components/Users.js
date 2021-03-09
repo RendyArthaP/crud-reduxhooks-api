@@ -1,17 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Button, Form, Container } from 'react-bootstrap';
 import ListUsers from './ListUsers';
-import { getDataUser } from '../redux/actions/User.actions';
+import { getDataUser, addUser,deleteUser } from '../redux/actions/User.actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Users = () => {
-  const users = useSelector((state) => state.data)
-  console.log(users)
+  const handleUsers = useSelector((state) => state.data)
   const dispatch = useDispatch()
+  const [dataUser, setDataUser] = useState("")
 
   useEffect(() => {
     dispatch(getDataUser())
   }, [dispatch])
+
   return (
     <Container>
       <h1>
@@ -22,14 +23,20 @@ const Users = () => {
           <Form.Label>Input Users</Form.Label>
           <Form.Control 
             type="test" 
-            placeholder="Input users..." 
+            placeholder="Input users..."
+            value={dataUser}
+            onChange={(e) => setDataUser(e.target.value)}
           />
         </Form.Group>
-        <Button>
+        <Button onClick={() => dispatch((addUser(dataUser)))}>
           Add
         </Button>
       </Form>
-      <ListUsers users = {users}/>
+      <ListUsers 
+        handleUsers = {handleUsers} 
+        deleteUser = {deleteUser}
+        dispatch = {dispatch}
+      />
     </Container>
   )
 }

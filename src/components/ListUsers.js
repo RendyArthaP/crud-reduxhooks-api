@@ -1,14 +1,17 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-const ListUsers = ({users}) => {
+const ListUsers = ({handleUsers, deleteUser, dispatch}) => {
   return (
     <Container>
-      {users.map((listUser) => (
-        <div key={listUser.id}>
+      {console.log(handleUsers)}
+      {handleUsers.map((users) => (
+        <div key={users.id}>
           <span>
-            {listUser.user}
+            {users.user}
           </span>
+          <button onClick={() => dispatch(deleteUser(users.id))}>Delete</button>
+          <button>Edit</button>
         </div>
       ))}
     </Container>

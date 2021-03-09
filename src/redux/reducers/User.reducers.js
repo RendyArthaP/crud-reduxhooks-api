@@ -1,13 +1,20 @@
 import {
-  ADD_USER,
-  EDIT_USER,
-  DELETE_USER,
+  ADD_USER_REQUEST,
+  ADD_USER_SUCCESS,
+  ADD_USER_ERROR,
+
+  // EDIT_USER,
+
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
+
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_ERROR
 } from '../actions/User.actions.js';
 
-const initialState = {
+const initialState = { 
   data: [],
   error: null
 }
@@ -31,6 +38,40 @@ const handleUsers = (state = initialState, action) => {
         ...state,
         error: action.error
       }
+    case ADD_USER_REQUEST: 
+      return {
+        ...state
+      }
+    case ADD_USER_SUCCESS:
+      return {
+        ...state,
+        data: [
+          ...state.data,
+          action.result
+        ]
+      }
+    case ADD_USER_ERROR:
+      return {
+        ...state,
+        error: action.error
+      }
+    case DELETE_USER_REQUEST: 
+      return {
+        ...state
+      }
+    case DELETE_USER_SUCCESS:
+      let deleteStateUser = state.data.filter(users => users.id !== action.result.id);
+
+      return {
+        ...state,
+        data: [...deleteStateUser]
+    };
+    case DELETE_USER_ERROR:
+      return {
+        ...state,
+        error:action.error
+      }
+      
     default:
       return state
   }
