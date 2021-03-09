@@ -1,4 +1,4 @@
 import { createStore } from 'redux'
-import handleTodo from './reducers/Todo.reducers';
+import handleUsers from './reducers/User.reducers';
 
-export default createStore(handleTodo)
+export default createStore(handleUsers)
