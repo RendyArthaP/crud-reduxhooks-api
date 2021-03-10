@@ -13,6 +13,11 @@ const Users = () => {
     dispatch(getDataUser())
   }, [dispatch])
 
+  const handleAddTodo = () => {
+    dispatch(addUser(dataUser))
+    setDataUser("")
+  }
+
   return (
     <Container>
       <h1>
@@ -28,7 +33,7 @@ const Users = () => {
             onChange={(e) => setDataUser(e.target.value)}
           />
         </Form.Group>
-        <Button onClick={() => dispatch((addUser(dataUser)))}>
+        <Button onClick={handleAddTodo}>
           Add
         </Button>
       </Form>

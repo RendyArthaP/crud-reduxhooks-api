@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap'
 const ListUsers = ({handleUsers, deleteUser, dispatch}) => {
   return (
     <Container>
-      {console.log(handleUsers)}
       {handleUsers.map((users) => (
         <div key={users.id}>
           <span>

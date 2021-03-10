@@ -92,8 +92,8 @@ export const addUser = (dataUser) => {
     dispatch(addUserRequest());
 
     axios
-      .get("https://6023a95a6bf3e6001766b546.mockapi.io/users", {
-        users: dataUser
+      .post("https://6023a95a6bf3e6001766b546.mockapi.io/users", {
+        user: dataUser
       })
       .then((result) => dispatch(addUserSuccess(result.data)))
       .then((error) => dispatch(addUserError(error)))
