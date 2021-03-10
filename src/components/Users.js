@@ -9,6 +9,8 @@ const Users = () => {
   const dispatch = useDispatch()
   const [dataUser, setDataUser] = useState("")
 
+  console.log(handleUsers)
+
   useEffect(() => {
     dispatch(getDataUser())
   }, [dispatch])

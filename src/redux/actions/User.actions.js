@@ -4,9 +4,9 @@ export const ADD_USER_REQUEST = "ADD_USER_REQUEST"
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS"
 export const ADD_USER_ERROR = "ADD_USER_ERROR"
 
-// export const EDIT_USER_REQUEST = "EDIT_USER_REQUEST"
-// export const EDIT_USER_SUCCESS = "EDIT_USER_SUCCESS"
-// export const EDIT_USER_ERROR = "EDIT_USER_ERROR"
+export const EDIT_USER_REQUEST = "EDIT_USER_REQUEST"
+export const EDIT_USER_SUCCESS = "EDIT_USER_SUCCESS"
+export const EDIT_USER_ERROR = "EDIT_USER_ERROR"
 
 export const DELETE_USER_REQUEST = "DELETE_USER_REQUEST"
 export const DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS"
@@ -33,6 +33,24 @@ export const addUserError = (error) => {
   return {
     type: ADD_USER_ERROR,
     error
+  }
+}
+
+export const editUserRequest = () => {
+  return {
+    type: EDIT_USER_REQUEST
+  }
+}
+
+export const editUserSuccess = () => {
+  return {
+    type: EDIT_USER_SUCCESS
+  }
+}
+
+export const editUserError = () => {
+  return {
+    type: EDIT_USER_ERROR
   }
 }
 
@@ -97,6 +115,12 @@ export const addUser = (dataUser) => {
       })
       .then((result) => dispatch(addUserSuccess(result.data)))
       .then((error) => dispatch(addUserError(error)))
+  }
+}
+
+export const editUser = () => {
+  return function(dispatch) {
+    dispatch()
   }
 }
 
