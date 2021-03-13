@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 
-const ListUsers = ({handleUsers, deleteUser, dispatch}) => {
+const ListUsers = ({handleUsers, deleteUser, handleEditUser, dispatch}) => {
   return (
     <Container>
       {handleUsers.map((users) => (
@@ -10,7 +10,7 @@ const ListUsers = ({handleUsers, deleteUser, dispatch}) => {
             {users.user}
           </span>
           <button onClick={() => dispatch(deleteUser(users.id))}>Delete</button>
-          <button>Edit</button>
+          <button onClick={() => handleEditUser(users)}>Edit</button>
         </div>
       ))}
     </Container>

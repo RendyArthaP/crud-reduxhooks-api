@@ -42,15 +42,17 @@ export const editUserRequest = () => {
   }
 }
 
-export const editUserSuccess = () => {
+export const editUserSuccess = (result) => {
   return {
-    type: EDIT_USER_SUCCESS
+    type: EDIT_USER_SUCCESS,
+    result
   }
 }
 
-export const editUserError = () => {
+export const editUserError = (error) => {
   return {
-    type: EDIT_USER_ERROR
+    type: EDIT_USER_ERROR,
+    error
   }
 }
 
@@ -114,13 +116,19 @@ export const addUser = (dataUser) => {
         user: dataUser
       })
       .then((result) => dispatch(addUserSuccess(result.data)))
-      .then((error) => dispatch(addUserError(error)))
+      .catch((error) => dispatch(addUserError(error)))
   }
 }
 
-export const editUser = () => {
+export const editUser = (id, dataUser) => {
   return function(dispatch) {
-    dispatch()
+    dispatch(editUserRequest())
+      axios
+        .put("https://6023a95a6bf3e6001766b546.mockapi.io/users/"+id, {
+          user: dataUser
+        })
+        .then((result) => dispatch(editUserSuccess(result.data)))
+        .catch((error) => dispatch(editUserError(error)))
   }
 }
 

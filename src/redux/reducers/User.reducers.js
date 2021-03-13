@@ -41,9 +41,7 @@ const handleUsers = (state = initialState, action) => {
         error: action.error
       }
     case ADD_USER_REQUEST: 
-      return {
-        ...state
-      }
+      return state
     case ADD_USER_SUCCESS:
       return {
         ...state,
@@ -67,13 +65,26 @@ const handleUsers = (state = initialState, action) => {
       return {
         ...state,
         data: [...deleteStateUser]
-    };
+      };
     case DELETE_USER_ERROR:
       return {
         ...state,
         error:action.error
       }
+    case EDIT_USER_REQUEST:
+      return {
+        ...state
+      }
+    case EDIT_USER_SUCCESS:
+      let editStateUsers = state.find(users => users.id === action.users.id)
+      editStateUsers.users = action.users.data
       
+      return state
+    case EDIT_USER_ERROR:
+      return {
+        ...state,
+        error: action.error
+      }
     default:
       return state
   }
