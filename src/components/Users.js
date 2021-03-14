@@ -35,11 +35,7 @@ const Users = () => {
   const handleEditUser = (users) => {
     console.log(users)
     setUpdateButton(true)
-    console.log(handleUsers)
-    setDataUser({
-      user: users.user,
-      id: users.id
-    })
+    setDataUser(users.user)
   }
 
   return (
@@ -53,11 +49,8 @@ const Users = () => {
           <Form.Control 
             type="text" 
             placeholder="Input users..."
-            defaultValue={dataUser.user}
-            onChange={(e) => setDataUser({
-              ...dataUser,
-              user: e.target.value
-            })}
+            value={dataUser}
+            onChange={(e) => setDataUser(e.target.value)}
           />
         </Form.Group>
         <Button onClick={handleAddOrUpdateUser}>
