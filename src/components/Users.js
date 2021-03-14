@@ -9,9 +9,6 @@ const Users = () => {
   const dispatch = useDispatch()
   const [dataUser, setDataUser] = useState("")
   const [updateButton, setUpdateButton] = useState(false)
-  // const [findEditID, setFindEditID] = useState(null)
-
-  console.log(handleUsers)
 
   useEffect(() => {
     dispatch(getDataUser())
@@ -26,15 +23,23 @@ const Users = () => {
         setDataUser("")
       }
     } else {
-      dispatch(editUser({user: dataUser}))
+      dispatch(editUser({
+        user: dataUser
+      }))
+      console.log(dataUser)
       setDataUser("")
       setUpdateButton()
     }
   }
 
   const handleEditUser = (users) => {
+    console.log(users)
     setUpdateButton(true)
-    setDataUser(users.user)
+    console.log(handleUsers)
+    setDataUser({
+      user: users.user,
+      id: users.id
+    })
   }
 
   return (
@@ -48,8 +53,11 @@ const Users = () => {
           <Form.Control 
             type="text" 
             placeholder="Input users..."
-            value={dataUser}
-            onChange={(e) => setDataUser(e.target.value)}
+            defaultValue={dataUser.user}
+            onChange={(e) => setDataUser({
+              ...dataUser,
+              user: e.target.value
+            })}
           />
         </Form.Group>
         <Button onClick={handleAddOrUpdateUser}>

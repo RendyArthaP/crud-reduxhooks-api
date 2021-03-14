@@ -76,7 +76,7 @@ const handleUsers = (state = initialState, action) => {
         ...state
       }
     case EDIT_USER_SUCCESS:
-      let editStateUsers = state.find(users => users.id === action.users.id)
+      let editStateUsers = state.data.find(users => users.id === action.users.id)
       editStateUsers.users = action.users.data
       
       return state
