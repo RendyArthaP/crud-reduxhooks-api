@@ -15,7 +15,8 @@ const Todo = () => {
     dispatch(getDataTodo())
   }, [dispatch])
 
-  const handleAddOrUpdateTodo = () => {
+  const handleAddOrUpdateTodo = (e) => {
+    e.preventDefault();
     if(!updateButton) {
       if(dataTodo === "") {
         alert("Please input your todo")
@@ -47,7 +48,7 @@ const Todo = () => {
       <h1>
         Todo List with Redux
       </h1>
-      <Form>
+      <Form onSubmit={handleAddOrUpdateTodo}>
         <Form.Group>
           <Form.Label>Input Your Todo List</Form.Label>
           <Form.Control 
@@ -57,7 +58,7 @@ const Todo = () => {
             onChange={(e) => setDataTodo(e.target.value)}
           />
         </Form.Group>
-        <Button onClick={handleAddOrUpdateTodo}>
+        <Button type="submit">
           {updateButton ? "Update" : "Add"}
         </Button>
       </Form>
