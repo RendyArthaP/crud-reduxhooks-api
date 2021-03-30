@@ -45,7 +45,7 @@ const Todo = () => {
   return (
     <Container className="pt-4">
       <h1>
-        Todo List
+        Todo List with Redux
       </h1>
       <Form>
         <Form.Group>
