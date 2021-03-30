@@ -1,24 +1,24 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 
-const ListUsers = ({handleUsers, deleteUser, handleEditUser, dispatch}) => {
+const ListTodo = ({handleTodos, deleteTodo, handleEditTodo, dispatch}) => {
   return (
     <div className="mt-5">
-      {handleUsers.map((users) => (
-        <div key={users.id} className="py-1 text-center d-flex justify-content-between col-lg-8 mx-auto">
+      {handleTodos.map((todos) => (
+        <div key={todos.id} className="py-1 text-center d-flex justify-content-between col-lg-8 mx-auto">
           <span>
-            {users.user}
+            {todos.todo}
           </span>
           <div>
             <Button 
-              onClick={() => dispatch(deleteUser(users.id))} 
+              onClick={() => dispatch(deleteTodo(todos.id))} 
               variant="danger"
               className="btn-sm mx-2"
             >
               Delete
             </Button>
             <Button 
-              onClick={() => handleEditUser(users)} 
+              onClick={() => handleEditTodo(todos)} 
               variant="success"
               className="btn-sm px-3"
             >
@@ -31,4 +31,4 @@ const ListUsers = ({handleUsers, deleteUser, handleEditUser, dispatch}) => {
   )
 }
 
-export default ListUsers
+export default ListTodo
