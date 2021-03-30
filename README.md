@@ -14,3 +14,4 @@
 4. Run the apps with `npm start`
 
 Thank you
+Deploy link: https://todolistbyrendy.netlify.app/
