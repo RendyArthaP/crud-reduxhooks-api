@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Button, Form, Container } from 'react-bootstrap';
+import { Button, Form, Container} from 'react-bootstrap';
 import ListUsers from './ListUsers';
 import { getDataUser, addUser,deleteUser, editUser } from '../redux/actions/User.actions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +9,7 @@ const Users = () => {
   const dispatch = useDispatch()
   const [dataUser, setDataUser] = useState("")
   const [updateButton, setUpdateButton] = useState(false)
+  const [updateUser, setUpdateUser] = useState({})
 
   useEffect(() => {
     dispatch(getDataUser())
@@ -23,9 +24,11 @@ const Users = () => {
         setDataUser("")
       }
     } else {
-      dispatch(editUser({
+      const update = {
+        id: updateUser.id,
         user: dataUser
-      }))
+      }
+      dispatch(editUser(update))
       console.log(dataUser)
       setDataUser("")
       setUpdateButton()
@@ -36,19 +39,20 @@ const Users = () => {
     console.log(users)
     setUpdateButton(true)
     setDataUser(users.user)
+    setUpdateUser(users)
   }
 
   return (
-    <Container>
+    <Container className="pt-4">
       <h1>
-        Users
+        Todo List
       </h1>
       <Form>
         <Form.Group>
-          <Form.Label>Input Users</Form.Label>
+          <Form.Label>Input Your Todo List</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="Input users..."
+            placeholder="Input todo list..."
             value={dataUser}
             onChange={(e) => setDataUser(e.target.value)}
           />

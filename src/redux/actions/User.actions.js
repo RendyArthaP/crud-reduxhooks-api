@@ -121,16 +121,15 @@ export const addUser = (dataUser) => {
   }
 }
 
-export const editUser = (id) => {
-  console.log(id)
+export const editUser = ({id, user}) => {
   return function(dispatch) {
     dispatch(editUserRequest())
-      // axios
-      //   .put(`https://6023a95a6bf3e6001766b546.mockapi.io/users/${id.user.id}`, {
-      //     user: id.user.user
-      //   })
-      //   .then((result) => dispatch(editUserSuccess(result.data)))
-      //   .catch((error) => dispatch(editUserError(error)))
+      axios
+        .put(`https://6023a95a6bf3e6001766b546.mockapi.io/users/${id}`, {
+          user
+        })
+        .then((result) => dispatch(getDataUser()))
+        .catch((error) => dispatch(editUserError(error)))
   }
 }
 
